@@ -1,0 +1,104 @@
+{
+  "kind": "incremental-snapshot",
+  "source_epoch": "se1",
+  "initial_position": 0,
+  "initial_mirror": [],
+  "chunks": [
+    {
+      "id": "c1",
+      "range": [
+        0,
+        3
+      ],
+      "low": "L1",
+      "high": "H1",
+      "scan": {
+        "path": "scan-low-high.jsonl",
+        "bytes": 52,
+        "sha256": "0226923a88682e488cd8d3d57bdf4807b73fa5aa9b327e2cdb8f715ef2f98f82",
+        "rows": 2
+      }
+    },
+    {
+      "id": "c2",
+      "range": [
+        3,
+        6
+      ],
+      "low": "L2",
+      "high": "H2",
+      "scan": {
+        "path": "scan-second.jsonl",
+        "bytes": 26,
+        "sha256": "8692259fd912df6309d0804bae071633aa51778a90dd7d13b56b7d90fdc485be",
+        "rows": 1
+      }
+    }
+  ],
+  "stream": [
+    {
+      "position": 1,
+      "kind": "unknown",
+      "marker": "L1"
+    },
+    {
+      "position": 2,
+      "kind": "transaction",
+      "txid": "tx2",
+      "changes": [
+        {
+          "key": 1,
+          "op": "upsert",
+          "value": "new-a"
+        },
+        {
+          "key": 2,
+          "op": "delete"
+        },
+        {
+          "key": 4,
+          "op": "upsert",
+          "value": "new-d"
+        }
+      ]
+    },
+    {
+      "position": 3,
+      "kind": "marker",
+      "marker": "H1"
+    },
+    {
+      "position": 4,
+      "kind": "transaction",
+      "txid": "tx4",
+      "changes": [
+        {
+          "key": 1,
+          "op": "upsert",
+          "value": "after-high"
+        }
+      ]
+    },
+    {
+      "position": 5,
+      "kind": "marker",
+      "marker": "L2"
+    },
+    {
+      "position": 6,
+      "kind": "marker",
+      "marker": "H2"
+    }
+  ],
+  "end_position": 6,
+  "reference_end_rows": [
+    {
+      "key": 1,
+      "value": "after-high"
+    },
+    {
+      "key": 4,
+      "value": "new-d"
+    }
+  ]
+}
